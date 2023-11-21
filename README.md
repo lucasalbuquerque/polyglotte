@@ -52,11 +52,11 @@ console.log(translations);
 
 ### CLI
 
-You can also generate translations through the terminal, just type polyglotte in your terminal and respond each prompt.
+You can also generate translations through the terminal, just type `npx polyglotte` in your terminal and respond each prompt.
 
 ```bash
 ##
-polyglotte
+npx polyglotte
 
 ## Enter a comma-separated list of phrases to translate:
 "Hello", "my name is", "How", "Are", "You"
