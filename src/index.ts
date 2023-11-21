@@ -25,10 +25,11 @@ async function generateTranslations(
     resources: {},
   });
 
-  const fullOutputPath = path.resolve(
-    process.cwd(),
-    "./" + outputPath.replace("/", "")
-  );
+  const formatOutputPath = outputPath
+    .replace(/^(\.\.\/|\.\/)*/, "./")
+    .replace(/\/+/g, "/");
+
+  const fullOutputPath = path.resolve(process.cwd(), formatOutputPath);
 
   // Ensure the output directory exists
   if (!fs.existsSync(fullOutputPath)) {
