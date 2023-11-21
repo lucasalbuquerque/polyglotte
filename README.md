@@ -27,7 +27,7 @@ npm install polyglotte
 ## Usage
 
 ```javascript
-import { generateTranslations } from "polyglotte";
+import generateTranslations from "polyglotte";
 
 const arrayToTranslate = ["Hello", "my name is", "How", "Are", "You"];
 
