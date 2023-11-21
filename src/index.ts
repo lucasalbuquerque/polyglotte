@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as i18next from "i18next";
-import { translate } from "@vitalets/google-translate-api";
+import translate from "@vitalets/google-translate-api";
 import Translate from "@google-cloud/translate";
 
 interface Translations {
@@ -32,8 +32,6 @@ async function generateTranslations(
     fs.mkdirSync(fullOutputPath);
   }
 
-  const googleTranslate = new Translate.v2.Translate({ key: apiKey });
-
   // Function to convert a string to snake_case
   const toSnakeCase = (str: string): string =>
     str.replace(/\s+/g, "_").toLowerCase();
@@ -47,6 +45,8 @@ async function generateTranslations(
       const result = await translate(text, { to: targetLang });
       return result.text;
     }
+
+    const googleTranslate = new Translate.v2.Translate({ key: apiKey });
 
     const result = await googleTranslate.translate(text, { to: targetLang });
     return result[0];
