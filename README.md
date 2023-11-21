@@ -34,7 +34,7 @@ const arrayToTranslate = ["Hello", "my name is", "How", "Are", "You"];
 // Specify your target languages
 const languages = ["en", "es", "fr"];
 
-// Set freeApi to false (strongly recommended) if you are not using a free API
+// Set freeApi to false (strongly not recommended) if you are not using a free API
 const freeApi = true;
 
 // Replace 'your-api-key' with your actual Google Cloud API Key
