@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Automatic Translation Generator for Multilingual Applications",
   "main": "dist/index.js",
+  "bin": {
+    "polyglotte": "dist/cli.js"
+  },
   "scripts": {
     "build": "tsc"
   },
