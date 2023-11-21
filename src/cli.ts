@@ -36,7 +36,7 @@ async function main() {
   }
 
   const outputDirectory = await prompt(
-    "Enter the output directory for translations:"
+    "Enter the output directory for translations: (eg: src/translations)"
   );
 
   // Call the generateTranslations function
