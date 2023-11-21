@@ -1,6 +1,6 @@
 {
   "name": "polyglotte",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "author": "Lucas Albuquerque <lucastableless@gmail.com>",
   "description": "Automatic Translation Generator for Multilingual Applications",
   "main": "dist/index.js",
