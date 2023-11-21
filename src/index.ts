@@ -13,7 +13,7 @@ async function generateTranslations(
   languages: string[],
   freeApi: boolean,
   apiKey: string,
-  outputPath = "/translations"
+  outputPath = "./translations"
 ): Promise<Translations> {
   const translations: Translations = {};
 
