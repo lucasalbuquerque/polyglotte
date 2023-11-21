@@ -50,6 +50,30 @@ const translations = generateTranslations(
 console.log(translations);
 ```
 
+### CLI
+
+You can also generate translations through the terminal, just type polyglotte in your terminal and respond each prompt.
+
+```bash
+##
+polyglotte
+
+## Enter a comma-separated list of phrases to translate:
+"Hello", "my name is", "How", "Are", "You"
+
+## Enter a comma-separated list of target languages:
+"en", "es", "fr"
+
+## Use the free API? (yes/no):
+no
+
+## Enter your Google Cloud API Key:
+api-key
+
+## Enter the output directory for translations:
+/translations
+```
+
 ## Example Output
 
 After using Polyglotte to generate translations, your `translations` folder will support any language, producing files like:
