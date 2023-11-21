@@ -45,8 +45,14 @@ async function generateTranslations(
     targetLang: string
   ): Promise<string> => {
     if (freeApi) {
-      const result = await translate(text, { to: targetLang });
-      return result.text;
+      try {
+        const result = await translate(text, { to: targetLang });
+        return result.text;
+      } catch {
+        throw new Error(
+          "Too many requests!! Get a Google Cloud Translation API token."
+        );
+      }
     }
 
     const googleTranslate = new Translate.v2.Translate({ key: apiKey });
