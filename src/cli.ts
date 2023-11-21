@@ -28,7 +28,9 @@ async function main() {
     .map((lang) => lang.trim());
 
   const freeApi =
-    (await prompt("Use the free API? (yes/no):")).toLowerCase() === "yes";
+    (
+      await prompt("Use the free API (not recommended)? (yes/no):")
+    ).toLowerCase() === "yes";
 
   let apiKey = "";
   if (!freeApi) {
