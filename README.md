@@ -1,6 +1,8 @@
 # Polyglotte - Simplifying Translation Generation with JSON files
 
-![Polyglotte](./assets/logo-sm.png)
+<p align="center">
+ <img src="./assets/logo-sm.png" width="400">
+</p>
 
 Have you ever faced the daunting task of populating extensive .json files with translations for various languages?
 
