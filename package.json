@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lucasalbuquerque/polyglotte"
+    "url": "git+https://github.com/lucasalbuquerque/polyglotte.git"
   },
   "keywords": [
     "translation",
