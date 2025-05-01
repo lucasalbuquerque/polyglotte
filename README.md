@@ -6,7 +6,7 @@
 
 Have you ever faced the daunting task of populating extensive .json files with translations for various languages?
 
-Polyglotte is a user-friendly tool designed to simplify the process of generating translations for your application in multiple languages.
+Polyglotte is a dev-friendly npm package designed to simplify the process of generating translations for your application in multiple languages.
 
 This versatile tool supports internationalization (i18n) and automatically generates JSON files containing translations for your chosen languages.
 
