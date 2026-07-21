@@ -1,58 +1,65 @@
-import * as readline from "readline";
+import inquirer from "inquirer";
 import generateTranslations from "./index"; // Adjust the import path as needed
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-function prompt(question: string): Promise<string> {
-  return new Promise((resolve) => {
-    rl.question(question, (answer) => {
-      resolve(answer.trim());
-    });
-  });
+interface Answers {
+  arrayToTranslate: string;
+  languages: string;
+  freeApi: boolean;
+  apiKey: string;
+  outputDirectory: string;
 }
 
 async function main() {
-  const arrayToTranslate = (
-    await prompt("Enter a comma-separated list of phrases to translate:")
-  )
+  const answers: Answers = await inquirer.prompt([
+    {
+      type: "input",
+      name: "arrayToTranslate",
+      message: "Enter a comma-separated list of phrases to translate:",
+      validate: (input) => input.trim() !== "",
+    },
+    {
+      type: "input",
+      name: "languages",
+      message: "Enter a comma-separated list of target languages:",
+      validate: (input) => input.trim() !== "",
+    },
+    {
+      type: "confirm",
+      name: "freeApi",
+      message: "Use the free API (not recommended)?",
+      default: true,
+    },
+    {
+      type: "input",
+      name: "apiKey",
+      message: "Enter your Google Cloud API Key:",
+      when: (answers) => !answers.freeApi,
+      validate: (input) => input.trim() !== "",
+    },
+    {
+      type: "input",
+      name: "outputDirectory",
+      message: "Enter the output directory for translations:",
+      default: "./src/translations",
+    },
+  ]);
+
+  const arrayToTranslate: string[] = answers.arrayToTranslate
     .split(",")
     .map((phrase) => phrase.trim());
 
-  const languages = (
-    await prompt("Enter a comma-separated list of target languages:")
-  )
-    .split(",")
-    .map((lang) => lang.trim());
-
-  const freeApi =
-    (
-      await prompt("Use the free API (not recommended)? (yes/no):")
-    ).toLowerCase() === "yes";
-
-  let apiKey = "";
-  if (!freeApi) {
-    apiKey = await prompt("Enter your Google Cloud API Key:");
-  }
-
-  const outputDirectory = await prompt(
-    "Enter the output directory for translations: (eg: src/translations)"
-  );
+  const languages: string[] = answers.languages.split(",").map((lang) => lang.trim());
 
   // Call the generateTranslations function
-  const translations = generateTranslations(
+  const translations = await generateTranslations(
     arrayToTranslate,
     languages,
-    freeApi,
-    apiKey,
-    outputDirectory
+    answers.freeApi,
+    answers.apiKey,
+    answers.outputDirectory
   );
 
   console.log(translations);
-
-  rl.close();
 }
 
 main();
